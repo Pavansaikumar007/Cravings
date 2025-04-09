@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Import Gilroy Font */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./src/assets/fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Set Gilroy as default font */
+@layer base {
+  html {
+    font-family: 'Gilroy', arial, "Helvetica Neue", sans-serif;
+  }
+}
+
