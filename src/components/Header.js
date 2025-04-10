@@ -1,4 +1,4 @@
-const logo = new URL("../assets/images/Cravings.png", import.meta.url)
+const logo = new URL("../assets/images/Cravings_img.jpg", import.meta.url)
 import { PiHandbagBold } from "react-icons/pi";
 // console.log(import.meta.url)
 
