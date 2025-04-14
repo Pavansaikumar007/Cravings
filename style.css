@@ -4,7 +4,7 @@
 @font-face {
   font-family: 'Gilroy';
   src: url('./src/assets/fonts/Gilroy-Medium.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: bolder;
   font-style: normal;
 }
 

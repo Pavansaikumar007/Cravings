@@ -2,23 +2,42 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import About from "./src/components/About";
+import Error from "./src/components/Error";
 
-const Craving = () => {
-    return(
+
+const AppLayout = () => {
+    const [searchText, setSearchText] = useState("")
+    return (
         <div>
-            <h1>i started creating the cravings app</h1>
+            <Header searchText={searchText} setSearchText={setSearchText} />
+            <Outlet context={{ searchText }} />
         </div>
     )
 }
 
-const AppData = () => {
-    return(
-        <div>
-            <Header />
-            <Body />
-        </div>
-    )
-}
+const AppRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout />,
+        children: [
+            {
+                path: "/",
+                element: <Body />
+            },
+            {
+                path: "/aboutus",
+                element: <About />
+            }
+        ],
+        errorElement: <Error />
+    },
+])
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppData />)
+root.render(<React.StrictMode>
+    <RouterProvider router={AppRouter} />
+</React.StrictMode>)
