@@ -26,7 +26,7 @@ const RestaurantCards = (props) => {
             <div className="pl-2 ">
                 <p className="font-bold pt-2 text-lg">{name.length > 20 ? name.slice(0, 20) + "..." : name}</p>
                 <p className=" flex items-center font-bold">
-                    <span><ImStarEmpty className="mb-[2px] pr-1" /></span> {avgRatingString} {sla.slaString} </p>
+                    <span><ImStarEmpty className="mb-[2px] pr-1" /></span> {avgRatingString} • {sla.slaString} </p>
                 <p className="text-[#6D7073] "> {cuisines.join(",").length > 22 ? cuisines.join(",").slice(0, 22) + "..." : cuisines.join(",")}  </p>
                 <p className="text-[#6D7073] "> {areaName} </p>
             </div>
