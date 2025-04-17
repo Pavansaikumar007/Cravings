@@ -1,5 +1,4 @@
-import { IMAGE_URL } from "../../utils/constants";
-import { SWIGGY_URL } from "../../utils/constants";
+import { IMAGE_URL, GET_SWIGGY_DATA_API } from "../../utils/constants";
 import { useState, useEffect, useRef } from "react";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import ImageCardList from "./ImageCardList";
@@ -12,9 +11,11 @@ const FoodCategoryCarousel = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const data = await fetch(SWIGGY_URL);
+                // Fetch from the SAME proxy as Body.js
+                const data = await fetch(GET_SWIGGY_DATA_API);
                 const json = await data.json();
-                const images = json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info || [];
+
+                const images =  json?.data?.cards[0]?.card?.card?.imageGridCards?.info || json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info || [];
                 setImageList(images)
             }
             catch (err) {
@@ -30,7 +31,6 @@ const FoodCategoryCarousel = () => {
             behaviour: "smooth",
         })
     }
-
 
 
     return (
