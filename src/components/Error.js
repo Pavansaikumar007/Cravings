@@ -22,6 +22,7 @@ const Error = () => {
   let errorMessage = error?.message;
   // Sometimes loaders/actions might put custom messages in `error.data`
   let errorDataMessage = typeof error?.data === 'string' ? error.data : null;
+  const isDev = process.env.NODE_ENV === "development";
 
   // Determine the best message to show the user
   const displayMessage =
@@ -67,7 +68,7 @@ const Error = () => {
       </Link>
 
       {/* Optional: Display stack trace only in development for easier debugging */}
-      {process.env.NODE_ENV === 'development' && error?.stack && (
+      {isDev && error?.stack && (
         <details className="mt-10 text-left w-full max-w-2xl bg-gray-100 p-4 rounded border border-gray-300">
           <summary className="cursor-pointer font-medium text-gray-600">
             Error Stack Trace (Development Only)
