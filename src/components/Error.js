@@ -8,6 +8,8 @@ import { useRouteError, Link } from "react-router";
 const Error = () => {
   // 1. Get the error object from React Router
   const error = useRouteError();
+  //image
+  const Logo = new URL("../assets/images/errorImg.png", import.meta.url);
 
   // 2. Log the detailed error to the developer console (very useful!)
   console.error("=== Routing Error Caught by ErrorElement ===");
@@ -31,10 +33,11 @@ const Error = () => {
           // Optional: Add a relevant error image/icon if you have one
           // src="/path/to/your/error-icon.svg"
           // alt="Error"
-          className="w-24 h-24 mb-6 text-red-500" // Placeholder styling if using an SVG icon library later
+          src={Logo}
+          className="w-30 h-50 mb-6 text-red-500" // Placeholder styling if using an SVG icon library later
           aria-hidden="true" // Hide decorative images from screen readers
       />
-      <h1 className="text-5xl font-extrabold text-red-600 mb-4">Oops!</h1>
+      <h1 className="text-3xl font-extrabold text-red-600 mb-4">Oops! Something Went Wrong!</h1>
       
       {/* Display Status Code if available (often from HTTP errors) */}
       {errorStatus && (
@@ -44,9 +47,9 @@ const Error = () => {
       )}
 
       {/* Display the most relevant error message */}
-      <p className="text-lg text-gray-700 mb-8 max-w-lg">
+      {/* <p className="text-lg text-gray-700 mb-8 max-w-lg">
         {displayMessage}
-      </p>
+      </p> */}
 
       {/* Display detailed message specifically for 404 Not Found */}
       {errorStatus === 404 && (

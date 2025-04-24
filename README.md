@@ -20,3 +20,11 @@
 2. how to use createBrowserRouter, RouterProvider, Outlet, useParams, Link.
 3. got so many errors but learned so many things from errors.
 4. how to fetch data dynamically.
+
+24/07:
+1. till now i have learned how to create custom hooks.
+2. solved cors issue by creating own API with the help of chatgpt.
+3. learned about how to use the functional components and custom hooks
+4. for displaying on ui - functional components are the best.
+5. for data fetching/filtering and logical code - custom Hooks.
+6. Learned how to use vercel and deployed my project on vercel and installed vercel on my vscode so, whenever i push the git commits the data will automatically gets changed in the live url.

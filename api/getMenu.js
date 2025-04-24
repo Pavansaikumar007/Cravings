@@ -23,7 +23,7 @@ export default async function handler(request, response) {
   // Note: Swiggy's actual URL might have more parameters; observe in browser dev tools if needed.
   const swiggyMenuApiUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
 
-  console.log(`[Proxy: getMenu] Fetching menu from Swiggy URL: ${swiggyMenuApiUrl}`);
+  console.log(`[Proxy: getMenu] Fetching Menu from Swiggy URL: ${swiggyMenuApiUrl}`);
 
   try {
     // --- Making the request FROM Vercel Server TO Swiggy ---

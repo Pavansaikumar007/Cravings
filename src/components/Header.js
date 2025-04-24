@@ -2,6 +2,7 @@ import { PiHandbagBold } from "react-icons/pi";
 import { LuSearch } from "react-icons/lu";
 import { useState } from "react";
 import { Link } from "react-router";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 // console.log(import.meta.url)
 
@@ -14,6 +15,8 @@ const Header = ({ searchText, setSearchText }) => {
     const handleInput = (e) => {
         setSearchText(e.target.value);
     }
+
+    const onlineStatus = useOnlineStatus();
 
     return (
         <div className="flex justify-between items-center sticky top-0 z-30 bg-white shadow-lg" >
@@ -34,17 +37,19 @@ const Header = ({ searchText, setSearchText }) => {
             </div>
 
             <div className="flex">
-                <ul className="flex justify-center  gap-20 mr-4">
+                <ul className="flex justify-center  gap-15 mr-4">
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"><Link to="/">Home</Link> </li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"> <Link to="/aboutus">About Us</Link> </li>
-                    <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer">Instamart</li>
+                    <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"><Link to="/instamart">Instamart</Link></li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer flex items-center gap-1"><PiHandbagBold />Cart</li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"
                         onClick={() => {
                             loginBtn === "Login" ? setLoginBtn("LogOut") : setLoginBtn("Login")
                         }}
                     >{loginBtn}</li>
-
+                    <li className="font-semibold text-[16px]  flex items-center gap-1">
+                        {onlineStatus === true ? "🟢Online" :"🔴Offline" }
+                        </li>
                 </ul>
             </div>
         </div>
