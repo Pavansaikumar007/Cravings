@@ -4,12 +4,11 @@ import Header from "./src/components/Header";
 import Body from "./src/components/Body";
 import { useState, lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
-import About from "./src/components/About";
 import Error from "./src/components/Error";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import Footer from "./src/components/Footer";
 
-const Instamart = lazy(() => import("/src/components/Instamart.js"))
+const Instamart = lazy(() => import("./src/components/Instamart.js"))
 const About = lazy(() => import("./src/components/About"))
 
 const AppLayout = () => {
