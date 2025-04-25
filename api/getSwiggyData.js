@@ -3,8 +3,8 @@
 
 const fetch = require('node-fetch');
 
-const DEFAULT_LAT = "17.7711568";
-const DEFAULT_LNG = "83.2358316";
+const DEFAULT_LAT = "17.7517346";
+const DEFAULT_LNG = "83.2178529";
 
 export default async function handler(request, response) {
   const lat = request.query.lat || DEFAULT_LAT;

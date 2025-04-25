@@ -28,3 +28,9 @@
 4. for displaying on ui - functional components are the best.
 5. for data fetching/filtering and logical code - custom Hooks.
 6. Learned how to use vercel and deployed my project on vercel and installed vercel on my vscode so, whenever i push the git commits the data will automatically gets changed in the live url.
+
+
+25-04:
+1. Learned how to manage data efficiently.
+2. Learned about higher order components.
+3. Build accordion for restuarant items.
