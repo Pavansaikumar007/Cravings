@@ -1,8 +1,9 @@
 import { PiHandbagBold } from "react-icons/pi";
 import { LuSearch } from "react-icons/lu";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 // console.log(import.meta.url)
 
@@ -17,6 +18,8 @@ const Header = ({ searchText, setSearchText }) => {
     }
 
     const onlineStatus = useOnlineStatus();
+
+    const {loggedInUser} = useContext(UserContext);
 
     return (
         <div className="flex justify-between items-center sticky top-0 z-30 bg-white shadow-lg" >
@@ -47,6 +50,7 @@ const Header = ({ searchText, setSearchText }) => {
                             loginBtn === "Login" ? setLoginBtn("LogOut") : setLoginBtn("Login")
                         }}
                     >{loginBtn}</li>
+                    <li>{loggedInUser}</li>
                     <li className="font-semibold text-[16px]  flex items-center gap-1">
                         {onlineStatus === true ? "🟢Online" :"🔴Offline" }
                         </li>

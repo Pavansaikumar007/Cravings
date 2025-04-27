@@ -24,7 +24,7 @@ const RestaurantItems = ({ items }) => {
                             }
                         </div>
                         <p className=" text-[16px] text-[#676A6D] pt-2 max-w-[552px] overflow-hidden">
-                            {item?.card?.info?.description && item?.card?.info?.description.length > 200 ? item?.card?.info?.description.slice(0, 100) + "..." : item?.card?.info?.description}</p>
+                            {item?.card?.info?.description && item?.card?.info?.description.length > 120 ? item?.card?.info?.description.slice(0, 130) + "..." : item?.card?.info?.description}</p>
                     </div>
                     <div className="relative w-[156px]">
                         <img className="h-[144px] object-cover rounded-lg w-full" src={IMAGE_URL + item?.card?.info?.imageId} />

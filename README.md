@@ -34,3 +34,9 @@
 1. Learned how to manage data efficiently.
 2. Learned about higher order components.
 3. Build accordion for restuarant items.
+
+27/04 : 
+1. learned how to lift the stateup
+2. what are the controlled and uncontrolled components are?
+3. build the toggle feature for accordion.
+4. learned about the props drilling and how to solve the props drilling createContext and useContext

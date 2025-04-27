@@ -3,12 +3,19 @@ import Shimmer from "./Shimmer"
 import { useParams } from "react-router";
 import RestaurantCategory from "./RestaurantCategory";
 import { MdStars } from "react-icons/md";
+import { useState } from "react";
 
 
 const RestaurantMenu = () => {
 
     const { resId } = useParams();
     // console.log(resId);
+
+    const [showIndex, setShowIndex] = useState(null);
+
+    const handleCategoryClick = (index) => {
+        showIndex === index ? setShowIndex(null) : setShowIndex(index)
+    }
 
     const restaurantDishes = useRestaurantMenu(resId);
 
@@ -24,18 +31,23 @@ const RestaurantMenu = () => {
         <div className="w-8/12 m-auto ">
             <div className=" border-2 border-gray-100 rounded-2xl mt-10 shadow-lg" >
                 <p className="font-[800] text-[28px] p-1 pl-2 ">{name}</p>
-                <p className=" font-[700] p-1 pl-2 flex"> 
+                <p className=" font-[700] p-1 pl-2 flex">
                     <span className="text-2xl  pr-1 text-[#FF5200]"><MdStars /></span>
-                     {avgRatingString} ({totalRatingsString}) • ₹{costForTwo / 100} for two</p>
+                    {avgRatingString} ({totalRatingsString}) • ₹{costForTwo / 100} for two</p>
                 <p className=" text-[#FF5200] underline font-[700] cursor-pointer p-1 pl-2 ">
                     {cuisines.join(", ")}</p>
             </div>
             <div>
-                {categories.map((category) => (
-                    <RestaurantCategory key={category?.card?.card?.title}
-                        data={category?.card?.card} />
+                {categories.map((category, index) => (
+                    //Controlled Component
+                    <RestaurantCategory
+                        key={category?.card?.card?.title}
+                        data={category?.card?.card}
+                        showItems={index === showIndex}
+                        onClick = {() => handleCategoryClick(index)}
+                    />
                 ))}
-            </div>
+            </div> 
         </div>
     )
 }
