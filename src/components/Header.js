@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 // console.log(import.meta.url)
 
@@ -19,7 +20,11 @@ const Header = ({ searchText, setSearchText }) => {
 
     const onlineStatus = useOnlineStatus();
 
-    const {loggedInUser} = useContext(UserContext);
+    const { loggedInUser } = useContext(UserContext);
+
+    //Updating the cart items
+    const cartItems = useSelector((store) => store.cart.items);
+    //console.log("ITEMS", cartItems)
 
     return (
         <div className="flex justify-between items-center sticky top-0 z-30 bg-white shadow-lg" >
@@ -41,19 +46,20 @@ const Header = ({ searchText, setSearchText }) => {
 
             <div className="flex">
                 <ul className="flex justify-center  gap-15 mr-4">
+                    <li className="font-semibold text-[16px]  flex items-center gap-1">
+                        {onlineStatus === true ? "🟢Online" : "🔴Offline"}
+                    </li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"><Link to="/">Home</Link> </li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"> <Link to="/aboutus">About Us</Link> </li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"><Link to="/instamart">Instamart</Link></li>
-                    <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer flex items-center gap-1"><PiHandbagBold />Cart</li>
+                    <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer flex items-center gap-1"><PiHandbagBold />
+                        <Link to="/cart">Cart {cartItems.length} items </Link></li>
                     <li className="font-semibold text-[16px] hover:text-[#F25206] cursor-pointer"
                         onClick={() => {
                             loginBtn === "Login" ? setLoginBtn("LogOut") : setLoginBtn("Login")
                         }}
                     >{loginBtn}</li>
                     <li>{loggedInUser}</li>
-                    <li className="font-semibold text-[16px]  flex items-center gap-1">
-                        {onlineStatus === true ? "🟢Online" :"🔴Offline" }
-                        </li>
                 </ul>
             </div>
         </div>

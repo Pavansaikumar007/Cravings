@@ -1,8 +1,17 @@
+import { useDispatch } from "react-redux";
 import { IMAGE_URL } from "../../utils/constants";
 import { TiStar } from "react-icons/ti";
+import { addItem } from "../../utils/cartSlice";
 
 const RestaurantItems = ({ items }) => {
     // console.log("ITEMS", items)
+    
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        dispatch(addItem(item));
+    }
+
     return (
         <div>
             {items?.map((item) => (
@@ -11,9 +20,9 @@ const RestaurantItems = ({ items }) => {
                         <p className="font-[800] text-[18px] text-[#414449]">{item?.card?.info?.name}</p>
                         <p className=" text-[16px] font-[700]">₹{item?.card?.info?.price / 100 || item?.card?.info?.finalPrice / 100}</p>
                         <div className=" text-[13px] text-[#116649] font-[700] pt-4 flex flex-row ">
-                        <span className=" text-lg ">
-                            <TiStar />
-                        </span>
+                            <span className=" text-lg ">
+                                <TiStar />
+                            </span>
                             {
                                 (item?.card?.info?.ratings?.aggregatedRating?.rating != null &&
                                     item?.card?.info?.ratings?.aggregatedRating?.ratingCountV2 != null) && (
@@ -28,7 +37,9 @@ const RestaurantItems = ({ items }) => {
                     </div>
                     <div className="relative w-[156px]">
                         <img className="h-[144px] object-cover rounded-lg w-full" src={IMAGE_URL + item?.card?.info?.imageId} />
-                        <button className="absolute -bottom-4 bg-white w-[120px] ml-4.5  h-[39px] shadow-lg rounded-lg font-[700] text-[#1BA672] border-1 border-gray-200 cursor-pointer hover:bg-[#D9DADB]" >ADD</button>
+                        <button className="absolute -bottom-4 bg-white w-[120px] ml-4.5  h-[39px] shadow-lg rounded-lg font-[700] text-[#1BA672] border-1 border-gray-200 cursor-pointer hover:bg-[#D9DADB]" 
+                        onClick={() => handleAddItem(item)}
+                        >ADD</button>
                     </div>
                 </div>
             ))}
